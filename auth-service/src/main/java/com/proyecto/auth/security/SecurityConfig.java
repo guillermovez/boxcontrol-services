@@ -27,7 +27,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())    
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/auth/login").permitAll() // Endpoint público de autenticación
+                    .requestMatchers("/auth/login", "/auth/register").permitAll() 
                     .anyRequest().authenticated()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
